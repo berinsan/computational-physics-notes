@@ -36,7 +36,13 @@ Essentially, at every step, position and velocity are approximated by using the 
 Things to Note:
 * With this method, the main source of error comes from the approximation of a constant velocity during each time step. Over time, the error accumulates and grows larger.
 
-* The asymmetrical use of information between time steps (we use only the initial velocity to calculate position after one time step, ignoring the change in velocity during that step) also contributes to the error.
+* Small errors happen at every step because the real motion is curved (due to acceleration), but Euler’s method treats it as straight lines (linear).
+
+* The asymmetry in using only the initial velocity to update position during a time step, ignoring velocity changes within that step, also adds to the error.
+
+* This error tends to accumulate over time because there is no correction mechanism.
+  
+* Euler’s method is less accurate over longer times or larger time steps. Using smaller time steps reduces the error per step but requires more computation.
 
 Applying this to projectile motion:
 ```python
@@ -49,7 +55,7 @@ ta = [] # time array for plotting
 ya = [] # position array for plotting
 t = 0.0 # time
 h = 0.02 # step size
-yb = [] # holds analytic solution
+yb = [] # holds analytic solution for position under constant acceleration
 
 while t<1.0:
     ta.append(t)
@@ -65,3 +71,6 @@ plt.xlabel('t (s)')
 plt.ylabel('y (m)')
 plt.show()
 ```
+![Description](images/eulers-method-projectile.png)
+
+Here, the analytical solution is represented by the orange dashed line, and Euler's method is represented by the blue line. Notice that the error grows over time, showing the limitations of Euler's method.
