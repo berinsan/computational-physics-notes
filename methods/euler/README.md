@@ -60,7 +60,7 @@ yb = [] # holds analytic solution for position under constant acceleration
 while t<1.0:
     ta.append(t)
     ya.append(y)
-    yb. append(v0*t-g*t*t/2.0) # analytic solution
+    yb.append(v0*t-g*t*t/2.0) # analytic solution
     v = v0 - g*t # calculate v(t)
     y = y + v*h # Euler's method
     t = t + h
