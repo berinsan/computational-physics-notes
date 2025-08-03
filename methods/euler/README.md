@@ -1,5 +1,5 @@
 # Euler's Method
-Imagine you don't have an explicit formula for the motion you're describing. You know only the initial conditions (position and velocity) and the forces at play. 
+Consider the example of free fall. Imagine you don't have an explicit formula for the motion you're describing. You know only the initial conditions (position and velocity) and the forces at play. 
 (If you know the force and the mass of the object, you also know the acceleration.)
 
 Using a time step ```h```, we calculate the position and velocity of the object after a time step ```h``` has passed.
