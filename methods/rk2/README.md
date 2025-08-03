@@ -1,5 +1,5 @@
 # Runge-Kutta 2 (RK2)
-Similar to Euler's method, RK2 is  a recursive algorithm used to approximate analytic solutions. However, in this method there is an embedded error correction mechanism.
+Similar to Euler's method, RK2 is  a recursive algorithm used to approximate analytic solutions to ODEs. However, in this method there is an embedded error correction mechanism.
 
 Instead of using initial velocity, it uses the velocity halfway through the time step to approximate position at the end of a time step, which is a better approximation of the average velocity over that time interval.
 
@@ -55,3 +55,5 @@ plt.tight_layout()
 plt.show()
 ```
 ![Description](images/rk2-method-projectile.png)
+
+Here, the analytical solution is represented by the green solid line, and the RK2 method is shown as the pink dashed line. As we can see, the graphs coincide much more acccurately compared to Euler's method.
