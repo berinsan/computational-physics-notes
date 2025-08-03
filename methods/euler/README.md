@@ -44,7 +44,7 @@ Things to Note:
   
 * Euler’s method is less accurate over longer times or larger time steps. Using smaller time steps reduces the error per step but requires more computation.
 
-Applying this to projectile motion:
+Applying this to free fall:
 ```python
 import matplotlib.pyplot as plt
 
