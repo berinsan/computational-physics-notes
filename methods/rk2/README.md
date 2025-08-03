@@ -8,3 +8,49 @@ v_half = v - g * (h/2)
 y = y + v_half * h
 v = v - g * h
 ```
+Applying this to free fall:
+```python
+import matplotlib.pyplot as plt
+# --- Constants
+g = 9.8 # Gravity
+h = 0.02 # Time Step
+v0 = 5.0 # Initial Velocity
+
+# --- Variables
+t = 0.0 # Time
+y = 0.0 # Initial Position
+
+# --- Analytic Solution
+ta = []
+ya = []
+while t < 1.0:
+    ta.append(t)
+    ya.append(v0*t - (1/2)*g*t*t)
+    t = t + h
+
+# --- Runge-Kutta 2
+td = []
+yd = []
+v = v0
+y = 0.0 # Initial Position Reset
+t = 0.0 # Time Reset
+while t < 1.0:
+    td.append(t)
+    yd.append(y)
+    v_half = v - g*(h/2)
+    y = y + v_half*h
+    v = v - g*h
+    t = t + h
+
+# --- Graph
+plt.figure()
+plt.plot(ta, ya,label="Analytic", color="green")
+plt.plot(td, yd, '--', label="RK2", color="pink")
+
+plt.xlabel('t (s)')
+plt.ylabel('y (m)')
+plt.title("Free Fall: Analytic vs RK2")
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
