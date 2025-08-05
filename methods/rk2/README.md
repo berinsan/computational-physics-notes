@@ -3,21 +3,21 @@ Similar to Euler's method, RK2 is  a recursive algorithm used to approximate ana
 
 Instead of using the slope of the function in the beginning of the time interval, RK2 uses the slope midway through the time step, which serves as a better approximation of the average slope over that time interval.
 <pre>
-  slope of function at (t, y): dy/dt = f(t, y)
+  slope of function at (y, t): dy/dt = f(y, t)
   initial condition: y(t₀) = y₀
 </pre>
-The goal is to estimate ```y(t)``` in discrete time steps ```h``` using the slope of function halfway through the time interval (t + h/2, y) ```dy/dt = f(t + h/2, y)```.
+The goal is to estimate ```y(t)``` in discrete time steps ```h``` using the slope of function halfway through the time interval (y, t + h/2) ```dy/dt = f(y, t + h/2)```.
 
 The recursive algorithm:
 <pre>
     Estimate the slope at current point:
-    k1 = f(tₙ, yₙ)
+    k1 = f(yₙ, tₙ)
   
     Estimate y at mid point:
     ymid = yₙ + k1 * h/2
 
     Estimate slope at mid point:
-    k2 = f(tₙ, ymid)
+    k2 = f(ymid, t)
 
     Estimate y at end point:
     yₙ₊₁ = yₙ + k2 * h
