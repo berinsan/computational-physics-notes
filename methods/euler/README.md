@@ -2,14 +2,14 @@
 Euler's method is a numerical technique that is used to approximate analytic solutions to ordinary differential equations (ODEs). It is a first-order method⁺, meaning the global error is proportional to the time step size.
 
 <pre>
-  slope of function at (t, y): dy/dt = f(t, y)
+  slope of function at (y, t): dy/dt = f(y, t)
   initial condition: y(t₀) = y₀
 </pre>
-The goal is to estimate ```y(t)``` in discrete time steps ```h``` using the slope of function at the current point (t, y) ```dy/dt = f(t, y)```.
+The goal is to estimate ```y(t)``` in discrete time steps ```h``` using the slope of function at the current point (t, y) ```dy/dt = f(y, t)```.
 
 The recursive algorithm:
 <pre>
-   yₙ₊₁ = yₙ + f(tₙ, yₙ) * h
+   yₙ₊₁ = yₙ + f(yₙ, tₙ) * h
 </pre>
 We are moving to the next small discrete time step by walking along the current slope.
 
