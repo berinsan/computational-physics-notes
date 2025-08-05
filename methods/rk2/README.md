@@ -1,5 +1,5 @@
 # Runge-Kutta 2 (RK2)
-Similar to Euler's method, RK2 is  a recursive algorithm used to approximate analytic solutions to ODEs. However, in this method there is an embedded error correction mechanism.
+Similar to Euler's method, RK2 is  a recursive algorithm used to approximate analytic solutions to ODEs. However, in this method there is an embedded error correction mechanism. This method is called second-order because the global error scales as ```h²```, which is an improvement from Euler’s method.
 
 Instead of using the slope of the function in the beginning of the time interval, RK2 uses the slope midway through the time step, which serves as a better approximation of the average slope over that time interval.
 <pre>
@@ -10,13 +10,23 @@ The goal is to estimate ```y(t)``` in discrete time steps ```h``` using the slop
 
 The recursive algorithm:
 <pre>
-    Estimate
-    yₙ₊₁ = yₙ + f(tₙ + h/2, ymid) * h
+    Estimate the slope at current point:
+    k1 = f(tₙ, yₙ)
+  
+    Estimate y at mid point:
+    ymid = yₙ + k1 * h/2
+
+    Estimate slope at mid point:
+    k2 = f(tₙ, ymid)
+
+    Estimate y at end point:
+    yₙ₊₁ = yₙ + k2 * h
 </pre>
 
+For our free fall problem, it would look like:
 ```python
-v_half = v - g * (h/2)
-y = y + v_half * h
+vmid = v - g * (h/2)
+y = y + vmid * h
 v = v - g * h
 ```
 Applying this to free fall:
@@ -48,8 +58,8 @@ t = 0.0 # Time Reset
 while t < 1.0:
     td.append(t)
     yd.append(y)
-    v_half = v - g*(h/2)
-    y = y + v_half*h
+    vmid = v - g*(h/2)
+    y = y + vmid*h
     v = v - g*h
     t = t + h
 
