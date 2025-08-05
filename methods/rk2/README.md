@@ -17,7 +17,7 @@ The recursive algorithm:
     ymid = yₙ + k1 * h/2
 
     Estimate slope at mid point:
-    k2 = f(ymid, t)
+    k2 = f(ymid, t + h/2)
 
     Estimate y at end point:
     yₙ₊₁ = yₙ + k2 * h
