@@ -1,7 +1,18 @@
 # Runge-Kutta 2 (RK2)
 Similar to Euler's method, RK2 is  a recursive algorithm used to approximate analytic solutions to ODEs. However, in this method there is an embedded error correction mechanism.
 
-Instead of using initial velocity, it uses the velocity halfway through the time step to approximate position at the end of a time step, which is a better approximation of the average velocity over that time interval.
+Instead of using the slope of the function in the beginning of the time interval, RK2 uses the slope midway through the time step, which serves as a better approximation of the average slope over that time interval.
+<pre>
+  slope of function at (t, y): dy/dt = f(t, y)
+  initial condition: y(t₀) = y₀
+</pre>
+The goal is to estimate ```y(t)``` in discrete time steps ```h``` using the slope of function halfway through the time interval (t + h/2, y) ```dy/dt = f(t + h/2, y)```.
+
+The recursive algorithm:
+<pre>
+    Estimate
+    yₙ₊₁ = yₙ + f(tₙ + h/2, ymid) * h
+</pre>
 
 ```python
 v_half = v - g * (h/2)
