@@ -68,3 +68,4 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 ```
+![Description](images/rk4-method-projectile.png)
